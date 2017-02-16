@@ -1,18 +1,18 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div id="test">
+    <img src="../../assets/logo.png">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'test'
 }
 </script>
 
 <style>
-#app {
+#test {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
