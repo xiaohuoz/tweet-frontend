@@ -9,9 +9,10 @@
             <div class = "contentTitle">
               Member Login
             </div>
-            <input v-model="username" type = "text" placeholder = "USERNAME"/>
-            <input v-model="password" type = "text" placeholder = "PASSWORD"/>
-            <input v-model="domain" type = "text" placeholder = "DOMAIN"/>
+            <input v-on:change="clearErrorMessage" v-model="username" type = "text" placeholder = "USERNAME"/>
+            <input v-on:change="clearErrorMessage" v-model="password" type = "text" placeholder = "PASSWORD"/>
+            <input v-on:change="clearErrorMessage" v-model="domain" type = "text" placeholder = "DOMAIN"/>
+            <span style= "color:red">{{error}}</span>
             <input v-on:click="auth" type = "button" placeholder = "password" value="LOGIN"/>
             <a href = "#">跳过</a>
             <br />
@@ -23,23 +24,31 @@
 
 <script>
 import {login} from '../service/auth'
+import Cookie from 'js-cookie'
 export default {
   name: 'auth',
   data () {
     return {
       username: '',
       password: '',
-      domain: ''
+      domain: '',
+      error: ''
     }
   },
   methods: {
     auth () {
-      console.log(this)
       const {username, password} = this
-      this.$router.push({path: '/'})
       login({username, password}).then(({jsonResult}) => {
-        console.log(jsonResult)
+        if (jsonResult.success === true) {
+          Cookie.set('userInfo', jsonResult.data)
+          this.$router.push({path: '/'})
+        } else {
+          this.error = jsonResult.message
+        }
       })
+    },
+    clearErrorMessage () {
+      this.error = ''
     }
   }
 }
@@ -59,13 +68,13 @@ export default {
   background-color:#F7DB56;
 }
 .Model{
-  position:absolute; 
-  top:50%;           
-  left:50%;          
+  position:absolute;
+  top:50%;
+  left:50%;
   margin:-@model-height*0.5 0 0 -@model-width*0.5;
-  width:@model-width; 
+  width:@model-width;
   height:@model-height;
-  background:white; 
+  background:white;
   box-shadow: 0px 0px 5px 5px #EFCF24;
   border-radius:@model-height*0.02;
 }
@@ -84,7 +93,7 @@ export default {
   background:white;
   position:absolute;
   border-radius:50%;
-  top:50%;           
+  top:50%;
   left:50%;
   margin:-@header-width*0.33 0 0 -@header-width*0.5*0.3;
 }
@@ -94,7 +103,7 @@ export default {
   height:@header-height*0.25;
   border-radius:@header-height*0.25 @header-height*0.25 0 0;
   background:white;
-  top:50%;           
+  top:50%;
   left:50%;
   margin:-@header-width*0.05 0 0 -@header-width*0.5*0.5;
 }
@@ -114,7 +123,7 @@ export default {
   border-width:none;
   border-style:none;
   border-radius:2px;
-  margin:@input-height*0.5 0 0 0;
+  margin:@input-height*0.3 0 @input-height*0.3 0;
   font-size:@font-size;
 }
 .content input[type="button"]{

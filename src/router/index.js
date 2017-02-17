@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from 'components/Hello'
-import Auth from 'components/Auth'
 import App from 'layout/mainlayout/App'
+import Auth from 'components/Auth'
+import Home from 'components/Home'
+import Tweets from 'components/Tweets'
+import Blogs from 'components/Blogs'
 
 Vue.use(Router)
 
@@ -14,10 +16,13 @@ export default new Router({
       component: App,
       children: [{
         path: '',
-        component: Hello
+        component: Home
       }, {
-        path: 'Hello',
-        component: Hello
+        path: 'tweets',
+        component: Tweets
+      }, {
+        path: 'blogs',
+        component: Blogs
       }]
     }, {
       path: '/auth',

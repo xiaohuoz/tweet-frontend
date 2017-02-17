@@ -1,7 +1,24 @@
 <template>
   <div id="test">
-    <img src="../../assets/logo.png">
-    <router-view></router-view>
+    <div id = "header">
+      <div class = "headerItem">
+          <p><a href = "#">Home</a></p>
+      </div>
+      <div class = "headerItem">
+        <ul class="headerLink">
+          <li>
+            <a href = "https://github.com/xiaohuoz">GitHub</a>
+          </li>
+          <li>
+            <router-link to="/tweets">Tweets</router-link>
+          </li>
+          <li>
+            <router-link to="/blogs">Blogs</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <router-view class = "main"></router-view>
   </div>
 </template>
 
@@ -12,12 +29,50 @@ export default {
 </script>
 
 <style>
+a{
+  text-decoration: none;
+}
 #test {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
+}
+#header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  width:100%;
+  height:44px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  border-bottom:1px solid gray;
+  box-shadow: 0px 0px 10px 0px gray;
+}
+.headerItem {
+  flex:1;
+}
+.headerItem p{
+  position: relative;
+  left:10px;
+}
+.headerLink {
+  position:relative;
+  right: 10px;
+  list-style: none;
+  float: right;
+}.headerLink ::after{
+  clear: both;
+}
+.headerLink li{
+  display:inline-block;
+}
+.main{
+  position: relative;
+  top:44px;
 }
 </style>
