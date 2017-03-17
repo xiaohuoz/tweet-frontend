@@ -7,7 +7,7 @@
     {{content}}
   </div>
   <div v-on:click = "ondelete" class = "tweet-delete">
-    删除
+    <el-button type="primary" icon="delete">删除</el-button>
   </div>
 </div>
 </template>
@@ -27,7 +27,9 @@ export default {
   },
   methods: {
     ondelete: function () {
-      this.$emit('ondelete', this._id)
+      if (confirm('删除这条信息?')) {
+        this.$emit('ondelete', this._id)
+      }
     }
   }
 }
@@ -36,15 +38,19 @@ export default {
   .tweet{
     display: flex;
     flex-direction: row;
+    margin: 4px;
+
+    border-radius: 4px;
   }
   .tweet-time{
+    display: flex;
     width:120px;
+    border-left: 6px solid red;
   }
   .tweet-content{
-    flex: 4;
-    flex-grow:1
+    flex: 11;
   }
-  .tweet-delete{
-    flex:1;
+  .tweet-delete button{
+    float: right;
   }
 </style>

@@ -4,9 +4,10 @@ export async function get () {
   return xFetch('/api/tweets')
 }
 export async function put (tweet) {
+  const json = { tweet }
   return xFetch('/api/tweets', {
     method: 'PUT',
-    body: JSON.stringify(tweet),
+    body: JSON.stringify(json),
     headers: headers
   })
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="test">
-    <div id = "header">
+    <nav id = "header">
       <div class = "headerItem">
           <p><a href = "#">Home</a></p>
       </div>
@@ -17,7 +17,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
     <router-view class = "main"></router-view>
   </div>
 </template>
@@ -46,23 +46,28 @@ a{
   background-color: white;
   display: flex;
   width:100%;
-  height:44px;
+  height:50px;
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
   border-bottom:1px solid gray;
   box-shadow: 0px 0px 10px 0px gray;
+  background-color: black;
+  color: white;
+}
+#header a{
+  color: white;
 }
 .headerItem {
   flex:1;
 }
 .headerItem p{
   position: relative;
-  left:10px;
+  left:20px;
 }
 .headerLink {
   position:relative;
-  right: 10px;
+  right: 20px;
   list-style: none;
   float: right;
 }.headerLink ::after{
@@ -73,6 +78,6 @@ a{
 }
 .main{
   position: relative;
-  top:44px;
+  top:50px;
 }
 </style>
