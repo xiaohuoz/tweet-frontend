@@ -54,6 +54,7 @@ a{
   box-shadow: 0px 0px 10px 0px gray;
   background-color: black;
   color: white;
+  z-index: 999;
 }
 #header a{
   color: white;

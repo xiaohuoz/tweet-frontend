@@ -95,5 +95,19 @@ export default {
     border-radius: 50%;
     width:50px;
     height:50px;
+    background: #FFC125;
+    border-color:#FFC125;
+  }
+  .tweet-add button:hover{
+    background: #FFD700;
+    border-color:#FFD700;
+  }
+  .tweet-add button:active{
+    background: #FFD700;
+    border-color:#FFD700;
+  }
+  .tweet-add button:focus{
+    background: #FFD700;
+    border-color:#FFD700;
   }
 </style>
