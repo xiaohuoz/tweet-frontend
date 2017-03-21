@@ -1,13 +1,14 @@
 <template>
   <div class="content">
     <div class="tweet-add">
-      <el-button type="primary" draggable="true" icon ="plus" v-on:click="handleclick"></el-button>
+      <buttonAdd draggable="true" v-on:click="handleClick"/>
     </div>
     <tweet v-for = "item in data" v-on:ondelete = "handleDelete" v-bind:time = "item.time" v-bind:content = "item.content" v-bind:_id = "item._id"/>
   </div>
 </template>
 <script>
 import tweet from '../staticComponents/tweet.vue'
+import buttonAdd from '../staticComponents/button_Add.vue'
 import {get, deleteById, put} from '../service/tweet'
 function gernerateData (n) {
   var result = []
@@ -22,7 +23,8 @@ function gernerateData (n) {
 }
 export default {
   components: {
-    tweet
+    tweet,
+    buttonAdd
   },
   name: 'home',
   data () {
@@ -43,7 +45,7 @@ export default {
         }
       })
     },
-    handleclick () {
+    handleClick () {
       this.$prompt('Please input whatever you want', 'Tip', {
         confirmButtonText: 'OK',
         cancelButtonText: 'Cancel'
@@ -90,24 +92,5 @@ export default {
     position: fixed;
     bottom: 60px;
     right: 60px;
-  }
-  .tweet-add button{
-    border-radius: 50%;
-    width:50px;
-    height:50px;
-    background: #FFC125;
-    border-color:#FFC125;
-  }
-  .tweet-add button:hover{
-    background: #FFD700;
-    border-color:#FFD700;
-  }
-  .tweet-add button:active{
-    background: #FFD700;
-    border-color:#FFD700;
-  }
-  .tweet-add button:focus{
-    background: #FFD700;
-    border-color:#FFD700;
   }
 </style>

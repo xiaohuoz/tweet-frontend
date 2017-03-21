@@ -4,8 +4,13 @@ import Vue from 'vue'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import './assets/css/font-awesome.min.css'
+import VueHtml5Editor from 'vue-html5-editor'
+import options from './vueHtmlEditor'
 /* eslint-disable no-new */
 Vue.use(ElementUI)
+
+Vue.use(VueHtml5Editor, options)
 new Vue({
   router
 }).$mount('#app')

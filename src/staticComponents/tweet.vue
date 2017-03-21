@@ -39,7 +39,6 @@ export default {
     display: flex;
     flex-direction: row;
     margin: 4px;
-
     border-radius: 4px;
   }
   .tweet-time{
