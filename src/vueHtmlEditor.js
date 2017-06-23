@@ -8,20 +8,20 @@ export default {
   // 自定义各个图标的class，默认使用的是font-awesome提供的图标
   // custom icon class of built-in modules,default using font-awesome
   icons: {
-    text: 'fa fa-pencil',
-    color: 'fa fa-paint-brush',
-    font: 'fa fa-font',
-    align: 'fa fa-align-justify',
-    list: 'fa fa-list',
-    link: 'fa fa-chain',
-    unlink: 'fa fa-chain-broken',
-    tabulation: 'fa fa-table',
-    image: 'fa fa-file-image-o',
-    hr: 'fa fa-minus',
-    eraser: 'fa fa-eraser',
-    undo: 'fa-undo fa',
-    'full-screen': 'fa fa-arrows-alt',
-    info: 'fa fa-info'
+    text: 'iconfont icon-pencil',
+    color: 'iconfont icon-paintbrush',
+    font: 'iconfont icon-a',
+    align: 'iconfont icon-aligncenter',
+    list: 'iconfont icon-list',
+    link: 'iconfont icon-link',
+    unlink: 'iconfont icon-unlink',
+    tabulation: 'iconfont icon-table',
+    image: 'iconfont icon-image',
+    hr: 'iconfont icon-horizontal',
+    eraser: 'iconfont icon-athit-iconfont-rich-clear-format',
+    undo: 'icon-undo iconfont',
+    'full-screen': 'iconfont icon-full',
+    info: 'iconfont icon-info'
   },
   // 配置图片模块
   // config image module

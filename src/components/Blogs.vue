@@ -6,22 +6,27 @@
     <el-dialog title="add blogs" v-model="dialogFormVisible">
       <el-form :model="form">
         <el-form-item label="title" :label-width="formLabelWidth">
-          <el-input v-model="form.name" auto-complete="off"></el-input>
+          <el-input v-model="form.title" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="type" :label-width="formLabelWidth">
+          <el-input v-model="form.type" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="content" :label-width="formLabelWidth">
-          <vue-html5-editor :content="content" :height="500" :z-index="1000" :auto-height="true" :show-module-name="false"></vue-html5-editor>
+          <vue-html5-editor class='vue-html-editor' @change="updateData" :content="content" :height="300" :z-index="1000" :auto-height="true" :show-module-name="false"></vue-html5-editor>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button type="primary" @click="handleClick">确 定</el-button>
       </div>
     </el-dialog>
+    <blog v-for = "item in blogs" v-on:ondelete = "handleDelete" v-bind:time = "item.time" v-bind:content = "item.content" v-bind:_id = "item._id"/>
   </div>
 </template>
 <script>
 import tweet from '../staticComponents/tweet.vue'
 import buttonAdd from '../staticComponents/button_Add.vue'
+import { put } from '../service/blog.js'
 export default {
   components: {
     tweet,
@@ -33,20 +38,30 @@ export default {
       content: '',
       dialogFormVisible: false,
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        title: '',
+        type: ''
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '80px',
+      blogs: []
     }
   },
   methods: {
     handleClick: function () {
+      this.dialogFormVisible = false
+      let json = {
+        title: this.form.title,
+        type: this.form.type,
+        content: this.content
+      }
+      put(json).then(({ jsonResult }) => {
+        console.log(jsonResult)
+        this.blogs = jsonResult.data
+      })
+    },
+    updateData: function (data) {
+      this.content = data
+    },
+    handleDelete: function () {
 
     }
   }
@@ -60,5 +75,8 @@ export default {
     position: fixed;
     bottom: 60px;
     right: 60px;
+  }
+  .vue-html-editor>.toolbar>ul>li>span[class~="icon"]{
+    vertical-align: baseline;
   }
 </style>
